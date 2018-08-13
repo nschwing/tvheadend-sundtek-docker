@@ -12,7 +12,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
 RUN apt-get update -qq \ 
- && apt-get install -qqy apt-transport-https software-properties-common bzip2 libavahi-client3 libav-tools xmltv wget udev w_scan gnupg2
+ && apt-get install -qqy apt-transport-https software-properties-common bzip2 libavahi-client3 libav-tools xmltv wget udev w-scan gnupg2
 
 # Add key and tvheadend repository
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
