@@ -1,9 +1,8 @@
-FROM debian:latest
-MAINTAINER clemensvb <cjvb@gmx.net>
-#forked from MAINTAINER firsttris <info@teufel-it.de>
+FROM debian:stretch
+MAINTAINER nschwing <nschwing@gmail.com>
 
 # master, unstable, testing, stable
-ENV tvh_release=unstable
+ENV tvh_release=stable
 
 ENV _clean="rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*"
 ENV _apt_clean="eval apt-get clean && $_clean"
@@ -15,8 +14,8 @@ RUN apt-get update -qq \
  && apt-get install -qqy apt-transport-https software-properties-common bzip2 libavahi-client3 libav-tools xmltv wget udev w-scan gnupg2
 
 # Add key and tvheadend repository
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
-RUN apt-add-repository "https://dl.bintray.com/tvheadend/deb ${tvh_release}"
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 89942AAE5CEAA174
+RUN apt-add-repository "https://apt.tvheadend.org/${tvh_release} stretch main"
 
 # Install tvheadend
 RUN apt-get update -qq \ 
