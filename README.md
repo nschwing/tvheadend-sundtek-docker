@@ -15,9 +15,13 @@ The 'unstable' version of tvheadend is used.
 Offical repository as source:   
 https://bintray.com/tvheadend/deb/tvheadend/
 
+### Parameters
+UID=1003
+GID=100
+
 ### Pull
 ```bash
-docker pull docker pull clemensvb/tvheadend-sundtek-docker
+docker pull catch3r/tvheadend-sundtek-docker
 ```
 
 ### Run:
