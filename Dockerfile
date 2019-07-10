@@ -2,7 +2,9 @@ FROM debian:stretch
 MAINTAINER nschwing <nschwing@gmail.com>
 
 # master, unstable, testing, stable
-ENV tvh_release=stable
+ENV tvh_release=unstable
+ENV UID=1003
+ENV GID=100
 
 ENV _clean="rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*"
 ENV _apt_clean="eval apt-get clean && $_clean"
@@ -11,7 +13,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
 RUN apt-get update -qq \ 
- && apt-get install -qqy apt-transport-https software-properties-common bzip2 libavahi-client3 libav-tools xmltv wget udev w-scan gnupg2
+ && apt-get install -qqy apt-transport-https software-properties-common bzip2 libavahi-client3 libav-tools xmltv wget udev w-scan gnupg2 socat
 
 # Add key and tvheadend repository
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 89942AAE5CEAA174
@@ -39,8 +41,8 @@ RUN apt-get update -qqy && apt-get install -qqy locales && $_apt_clean \
  && update-locale LANG=$LANG
 
 # Configure the hts user account and it's folders
-RUN groupmod -o -g 9981 hts \
- && usermod -o -u 9981 -a -G video -d /config hts \
+RUN groupmod -o -g $GID hts \
+ && usermod -o -u $UID -a -G video -d /config hts \
  && install -o hts -g hts -d /config /recordings
 
 # Launch script
