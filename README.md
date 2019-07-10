@@ -10,10 +10,10 @@ Tvheadend is a TV streaming server and recorder for Linux, FreeBSD and Android s
 [tvheadend.org](https://tvheadend.org/)
 
 The 'unstable' version of tvheadend is used. 
-15 Oct 2017: `Version 4.3-XXXX`
+`Version 4.3-XXXX`
 
 Offical repository as source:   
-https://bintray.com/tvheadend/deb/tvheadend/
+https://apt.tvheadend.org
 
 ### Parameters
 UID=1003
